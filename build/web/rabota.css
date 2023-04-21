@@ -1,0 +1,57 @@
+body {
+	background-color: #AFEEEE;
+	padding-top: 200px;
+} 
+
+h1 {
+	color: rgb(255,0,0);
+}
+
+h2 {
+	color: #663399;
+}
+
+p {
+	color: blue
+}
+
+p::first-letter {
+  	font-size: 150%;
+  	color: hsl(266, 64%, 58%);
+}
+
+p {
+   	margin: 10px;
+   	font-family: 'RacingSansOneRegular';
+   	font-weight: normal;
+   	font-style: normal;
+}
+ 
+div > h1,h3 {
+	background-color:yellow;
+}
+
+table:hover{
+	background-color:#B8860B;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	width: 1%;
+}
+
+#king {
+	color:#F08080;
+}
+
+a[href="https://uk.embassy.gov.au/lhlh/visas_and_migration.html"]{
+	color:OrangeRed;
+}
+nav {
+  position: absolute;
+}
+.modal .overlay ~ * > *, .card > * {
+	width: 100%;
+}
