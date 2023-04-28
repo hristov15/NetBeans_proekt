@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -32,11 +34,22 @@ public class RegisterServlet extends HttpServlet {
                    </html>
                    """;
         String db = "jdbc:mariadb://localhost/countries";
+        String reqName;
+        String reqPass;
+        String reqMail;
+        
                
         try {
            
            Class.forName("org.mariadb.jdbc.Driver");
            Connection conn = DriverManager.getConnection(db);
+           Statement stmt = conn.createStatement();
+           String query = """
+                     INSERT INTO potrebiteli(name, pass, mail)
+                     VALUES (\"wert\", \"fg\", \"ery\");
+                          """;
+           ResultSet rs = stmt.executeQuery(query);
+           
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
