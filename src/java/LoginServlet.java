@@ -18,25 +18,24 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(urlPatterns = {"/RegisterServlet"})
-public class RegisterServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/LoginServlet"})
+public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String r = """
                    <!DOCTYPE>
                    <html>
                       <head>
-                          <title>Register</title>
+                          <title>Login</title>
                       </head>
                       <body>
-                          <p>Registration successful.</p>
+                          <p>Login successful.</p>
                       </body>
                    </html>
                    """;
         String db = "jdbc:mariadb://localhost/countries";
         String reqName = request.getParameter("name");
         String reqPass = request.getParameter("pass");
-        String reqMail = request.getParameter("mail");
         
                
         try {
@@ -45,18 +44,18 @@ public class RegisterServlet extends HttpServlet {
            Connection conn = DriverManager.getConnection(db);
            Statement stmt = conn.createStatement();
            String query = """
-                     INSERT INTO potrebiteli(name, pass, mail)
-                     VALUES (\"%s\", \"%s\", \"%s\");
-                          """.formatted(reqName, reqPass, reqMail);
+                     INSERT INTO potrebiteli(name, pass)
+                     VALUES (\"%s\", \"%s\");
+                          """.formatted(reqName, reqPass);
            ResultSet rs = stmt.executeQuery(query);
            
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             Connection conn = DriverManager.getConnection(db);
         } catch (SQLException ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
        
